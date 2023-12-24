@@ -14,6 +14,8 @@ dependencies:
   intl: ^0.18.0
   flutter_gemini: ^1.0.1
   animated_text_kit: ^4.2.2
+  flutter_decorated_text: ^1.0.14
+  flutter_widget_from_html: ^0.9.1
 dev_dependencies: 
   flutter_test: 
     sdk: flutter

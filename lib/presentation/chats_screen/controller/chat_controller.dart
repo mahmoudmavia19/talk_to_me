@@ -17,13 +17,13 @@ class ChatController extends GetxController {
           messageId: '0',
         senderId: '0'
       ));
+      messageController.clear();
       print('sender message ${messages.last.message}');
       apiClient.sendMessage(messageController.text).then((value){
-        print('value');
-        messageController.clear();
+        print(value.toString());
         messages.add(MessageModel(
             message: value,
-            date:DateTime.now() ,
+            date:DateTime.now(),
             messageId: '0',
             receiverType: '0',
         ));
@@ -31,6 +31,25 @@ class ChatController extends GetxController {
     }
   }
 
+  sendChat() {
+    if(fKey.currentState!.validate()){
+      messages.add(MessageModel(
+          message: messageController.text,
+          date:DateTime.now() ,
+          messageId: '0',
+          senderId: '0'
+      ));
+      messageController.clear();
+      apiClient.sendChat(messages).then((value){
+        messages.add(MessageModel(
+          message: value,
+          date:DateTime.now() ,
+          messageId: messages.length.toString(),
+          receiverType: '0',
+        ));
+      });
+    }
+  }
   @override
   void onInit() {
     super.onInit();
